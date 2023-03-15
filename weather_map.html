@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Weather or not, here I come</title>
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="assets/weather-gifs/sun-icon.png"
+    />
+    <!-- Bootstrap Css -->
+    <link href="bootstrap-5.2.3-dist/css/bootstrap.min.css" rel="stylesheet" />
+    <!-- Mapbox JS -->
+    <script src="mapbox-gl/dist/mapbox-gl.js"></script>
+    <!-- Mapbox CSS -->
+    <link href="mapbox-gl/dist/mapbox-gl.css" rel="stylesheet" />
+    <link href="css/weather_map.css" rel="stylesheet" />
+  </head>
+
+  <body class="bg-light">
+    <section class="container mt-5">
+      <h1 class="display-1 titleText">Weather the Storm</h1>
+      <div class="container d-grid gap-3">
+        <div class="mb-3 row gx-5">
+          <div
+            id="currentWeather"
+            class="col-12 col-md p-0 my-2 m-1 m-md-2 m-lg-3"
+          ></div>
+          <div class="col-12 col-md p-0 my-2 m-1 m-md-2 m-lg-3">
+            <div class="card">
+              <div
+                id="map"
+                class="p-0 m-0 colorMe card-body"
+                style="height: 500px"
+              ></div>
+              <div class="card-footer">
+                <h2>Choose a Location</h2>
+                <label for="userLocation">Address</label>
+                <input id="userLocation" type="text" class="input-group-text" />
+                <button id="btn-submit-address" class="btn mt-2">
+                  Let's Go!
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="col-12">
+            <div id="forecastTiles" class="row gx-5">
+              <!-- Simple Forecast Cards Here -->
+            </div>
+          </div>
+
+          <div class="col-12 card p-0">
+            <div class="d-flex align-items-start">
+              <div
+                class="nav flex-column nav-pills nav-justified me-3"
+                id="weatherTabs"
+                role="tablist"
+                aria-orientation="vertical"
+              >
+                <button
+                  class="nav-link active"
+                  id="weather-tab-1"
+                  data-bs-toggle="pill"
+                  data-bs-target="#weather-1"
+                  type="button"
+                  role="tab"
+                  aria-controls="weather-1"
+                  aria-selected="true"
+                >
+                  Day 1
+                </button>
+                <button
+                  class="nav-link"
+                  id="weather-tab-2"
+                  data-bs-toggle="pill"
+                  data-bs-target="#weather-2"
+                  type="button"
+                  role="tab"
+                  aria-controls="weather-2"
+                  aria-selected="false"
+                >
+                  Day 2
+                </button>
+                <button
+                  class="nav-link"
+                  id="weather-tab-3"
+                  data-bs-toggle="pill"
+                  data-bs-target="#weather-3"
+                  type="button"
+                  role="tab"
+                  aria-controls="weather-3"
+                  aria-selected="false"
+                >
+                  Day 3
+                </button>
+                <button
+                  class="nav-link"
+                  id="weather-tab-4"
+                  data-bs-toggle="pill"
+                  data-bs-target="#weather-4"
+                  type="button"
+                  role="tab"
+                  aria-controls="weather-4"
+                  aria-selected="false"
+                >
+                  Day 4
+                </button>
+                <button
+                  class="nav-link"
+                  id="weather-tab-5"
+                  data-bs-toggle="pill"
+                  data-bs-target="#weather-5"
+                  type="button"
+                  role="tab"
+                  aria-controls="weather-5"
+                  aria-selected="false"
+                >
+                  Day 5
+                </button>
+              </div>
+              <div class="tab-content bg-white" id="weatherTabContent">
+                <div
+                  class="tab-pane fade show active"
+                  id="weather-1"
+                  role="tabpanel"
+                  aria-labelledby="weather-tab-1"
+                >
+                  Weather1
+                </div>
+                <div
+                  class="tab-pane fade"
+                  id="weather-2"
+                  role="tabpanel"
+                  aria-labelledby="weather-tab-2"
+                >
+                  Weather2
+                </div>
+                <div
+                  class="tab-pane fade"
+                  id="weather-3"
+                  role="tabpanel"
+                  aria-labelledby="weather-tab-3"
+                >
+                  Weather3
+                </div>
+                <div
+                  class="tab-pane fade"
+                  id="weather-4"
+                  role="tabpanel"
+                  aria-labelledby="weather-tab-4"
+                >
+                  Weather4
+                </div>
+                <div
+                  class="tab-pane fade"
+                  id="weather-5"
+                  role="tabpanel"
+                  aria-labelledby="weather-tab-5"
+                >
+                  Weather5
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <a
+          href="https://www.flaticon.com"
+          title="animated icons"
+          class="text-dark text-opacity-25"
+          >Icons created by Freepik - Flaticon</a
+        >
+      </div>
+    </section>
+
+    <!-- jQuery -->
+    <script src="js/jquery-3.6.3.js"></script>
+    <script src="js/keys.js"></script>
+    <!-- Mapbox Utils JS-->
+    <script src="js/mapbox-geocoder-utils.js"></script>
+    <!-- Bootstrap JS -->
+    <script src="bootstrap-5.2.3-dist/js/bootstrap.min.js"></script>
+    <!-- Custom JS-->
+    <script src="js/weather_map.js"></script>
+  </body>
+</html>

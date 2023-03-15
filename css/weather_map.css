@@ -1,0 +1,34 @@
+*,
+*::before,
+*::after {
+}
+
+.btn {
+  background-color: #35c3c3;
+}
+
+.colorMe {
+  background-color: #35c3c3;
+  border-radius: 0.5rem 0.5rem 0 0;
+}
+
+.titleText {
+  color: #35c3c3;
+  font-weight: bolder;
+  text-align: center;
+}
+
+.unit {
+  font-size: 0.725rem;
+}
+
+.nav-link {
+  color: #35c3c3;
+}
+.nav-link:hover {
+  color: #188c8c;
+}
+
+.nav-pills {
+  --bs-nav-pills-link-active-bg: #35c3c3;
+}
