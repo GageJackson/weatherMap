@@ -1,19 +1,28 @@
+:root {
+  --color-primary: #35c3c3;
+  --color-primary-dark: #106565;
+}
+
 *,
 *::before,
 *::after {
 }
 
+p{
+  font-size: clamp( 1vw, 1rem, 5vw);
+}
+
 .btn {
-  background-color: #35c3c3;
+  background-color: var(--color-primary);
 }
 
 .colorMe {
-  background-color: #35c3c3;
+  background-color: var(--color-primary);
   border-radius: 0.5rem 0.5rem 0 0;
 }
 
 .titleText {
-  color: #35c3c3;
+  color: var(--color-primary);
   font-weight: bolder;
   text-align: center;
 }
@@ -22,13 +31,14 @@
   font-size: 0.725rem;
 }
 
-.nav-link {
-  color: #35c3c3;
-}
-.nav-link:hover {
-  color: #188c8c;
-}
-
 .nav-pills {
   --bs-nav-pills-link-active-bg: #35c3c3;
+}
+
+.nav-link {
+  color: var(--color-primary);
+}
+
+.nav-link:hover {
+  color: var(--color-primary-dark);
 }
