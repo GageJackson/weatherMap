@@ -153,8 +153,8 @@
     html += `<div class ='card container'>`;
 
     html += `<div class="card-header row border-1 colorMe text-light">`;
-    html += `<h3 class="col-6 text-start">${myLocation}</h3>`;
-    html += `<h3 class="col-6 text-end">Today</h3>`;
+    html += `<h3 class="text-start">${myLocation}</h3>`;
+    html += `<h3 class="text-start">Today</h3>`;
     html += `</div>`;//end header
 
     html += `<div class="card-body row p-0">`;//start card body
@@ -169,7 +169,7 @@
     html += `<img src="/assets/weather-png/temperature.png" alt="current temp" class="img-fluid">`;
     html += `</div>`;
     html += `<div class="col-8">`;
-    html += `<span class="">${Math.round(data.current.temp)}&#8457</span>`;
+    html += `<span class="">${Math.round(data.current.temp)}&deg</span>`;
     html += `</div>`;
     html += `</div>`;//end row 1 of 3
 
@@ -214,54 +214,43 @@
     for (let i = 1; i < forecastedDayCount; i++) {
       let weatherGif = getWeatherGif(data.daily[i].weather[0].id);
 
-      html += '<div class="card col-5 col-md p-0 mx-auto mx-md-2 my-2">';
-      html += '<div class="card-header colorMe text-white p-3 p-md-2 pt-3">';
-      html += "<h3 class='text-center'>" + getDate(data.daily[i].dt) + "</h3>";
-      html += "</div>";
+      html += '<div class="col">';
+      html += '<div class="card">';
+
+      html += '<div class="card-header colorMe text-white">';
+      html += "<p class='text-center'>" + getDate(data.daily[i].dt) + "</p>";
+      html += "</div>"; // end of card-header
 
 
       html += '<div class="card-body">';
-      html +=
-          "<img src=" +
-          weatherGif +
-          ' alt="weather gif" class="img-fluid align-self-center">';
-      html += "</div>";
+      html += "<img src=" + weatherGif + ' alt="weather gif" class="img-fluid align-self-center">';
+      html += "</div>"; //end of card-body
 
 
-      html +=
-          '<div class="card-footer bg-light d-flex justify-content-between p-0 pt-3">';
-      html += '<div class="col-4 p-0 text-center">';
-      html +=
-          '<img src="/assets/weather-png/cold.png" alt="low temp" class="img-fluid w-50 mb-2">';
-      html +=
-          "<p>" +
-          Math.round(data.daily[i].temp.min) +
-          "<span class='unit'>&#8457</span></p>";
-      html += "</div>";
+      html += '<div class="card-footer bg-light">';
+      html += '<div class="row row-cols-3 g-3">';
+
+      html += '<div class="col text-center">';
+      html += '<img src="/assets/weather-png/cold.png" alt="low temp" class="img-fluid">';
+      html += "<p>" + Math.round(data.daily[i].temp.min) + "<span class='unit'>&deg</span></p>";
+      html += "</div>";//end of col
+
+      html += '<div class="col text-center">';
+      html += '<img src="/assets/weather-png/hot.png" alt="high temp" class="img-fluid">';
+      html += "<p>" + Math.round(data.daily[i].temp.max) + "<span class='unit'>&deg</span></p>";
+      html += "</div>";// end of col
+
+      html += '<div class="col text-center">';
+      html += '<img src="/assets/weather-png/umbrella.png" alt="chance of rain" class="img-fluid">';
+      html += "<p>" + Math.round(data.daily[i].pop * 100) + "<span class='unit'>%</span></p>";
+      html += "</div>";// end of col
+
+      html += "</div>";//end of row
+      html += "</div>";//end card-footer
 
 
-      html += '<div class="col-4 p-0 text-center">';
-      html +=
-          '<img src="/assets/weather-png/hot.png" alt="high temp" class="img-fluid w-50 mb-2">';
-      html +=
-          "<p>" +
-          Math.round(data.daily[i].temp.max) +
-          "<span class='unit'>&#8457</span></p>";
-      html += "</div>";
-
-
-      html += '<div class="col-4 p-0 text-center">';
-      html +=
-          '<img src="/assets/weather-png/umbrella.png" alt="chance of rain" class="img-fluid w-50 mb-2">';
-      html +=
-          "<p>" +
-          Math.round(data.daily[i].pop * 100) +
-          "<span class='unit'>%</span></p>";
-      html += "</div>";
-
-
-      html += "</div>";
-      html += "</div>";
+      html += "</div>";//end of card
+      html += "</div>";//end of big col
     }
     return html;
   }
@@ -282,42 +271,26 @@
 
       html += '<div class="card col-3 col-md p-0 mx-auto mx-md-2 my-2 border-0">';
       html += '<div class="card-body border-end p-0">';
-      html +=
-          "<img src=" +
-          weatherGif +
-          ' alt="weather gif" class="img-fluid align-self-center pb-4">';
+      html += "<img src=" + weatherGif + ' alt="weather gif" class="img-fluid align-self-center pb-4">';
       html += "</div>";
 
 
-      html +=
-          '<div class="card-footer d-flex justify-content-between p-0 border-end bg-white border-top-0">';
+      html += '<div class="card-footer d-flex justify-content-between p-0 border-end bg-white border-top-0">';
       html += '<div class="col-4 p-0 text-center">';
-      html +=
-          '<img src="/assets/weather-png/cold.png" alt="low temp" class="img-fluid w-50 mb-2">';
-      html +=
-          "<p>" +
-          Math.round(data.daily[i].temp.min) +
-          "<span class='unit'>&#8457</span></p>";
+      html += '<img src="/assets/weather-png/cold.png" alt="low temp" class="img-fluid w-50 mb-2">';
+      html += "<p>" + Math.round(data.daily[i].temp.min) + "<span class='unit'>&deg</span></p>";
       html += "</div>";
 
 
       html += '<div class="col-4 p-0 text-center">';
-      html +=
-          '<img src="/assets/weather-png/hot.png" alt="high temp" class="img-fluid w-50 mb-2">';
-      html +=
-          "<p>" +
-          Math.round(data.daily[i].temp.max) +
-          "<span class='unit'>&#8457</span></p>";
+      html += '<img src="/assets/weather-png/hot.png" alt="high temp" class="img-fluid w-50 mb-2">';
+      html += "<p>" + Math.round(data.daily[i].temp.max) + "<span class='unit'>&deg</span></p>";
       html += "</div>";
 
 
       html += '<div class="col-4 p-0 text-center">';
-      html +=
-          '<img src="/assets/weather-png/umbrella.png" alt="chance of rain" class="img-fluid w-50 mb-2">';
-      html +=
-          "<p>" +
-          Math.round(data.daily[i].pop * 100) +
-          "<span class='unit'>%</span></p>";
+      html += '<img src="/assets/weather-png/umbrella.png" alt="chance of rain" class="img-fluid w-50 mb-2">';
+      html += "<p>" + Math.round(data.daily[i].pop * 100) + "<span class='unit'>%</span></p>";
       html += "</div>";
 
       html += "</div>";
@@ -326,90 +299,54 @@
 
       html += "<div class='col px-0'>";
       html += '<div class="row px-0 py-2 m-0 mb-2 justify-content-evenly">';
-      html +=
-          '<img src="/assets/weather-png/sunrise.png" alt="morning temp" class="col-5 w-50 h-50 ratio ratio-1x1">';
-      html +=
-          "<p class='col-5 p-0 text-nowrap my-auto'>" +
-          Math.round(data.daily[i].temp.morn) +
-          "<span class='unit'>&#8457</span></p>";
+      html += '<img src="/assets/weather-png/sunrise.png" alt="morning temp" class="col-5 w-50 h-50 ratio ratio-1x1">';
+      html += "<p class='col-5 p-0 text-nowrap my-auto'>" + Math.round(data.daily[i].temp.morn) + "<span class='unit'>&deg</span></p>";
       html += "</div>";
 
       html += '<div class="row px-0 py-2 m-0 mb-2 justify-content-evenly ">';
-      html +=
-          '<img src="/assets/weather-png/sun.png" alt="day temp" class="col-5 w-50 h-50 ratio ratio-1x1">';
-      html +=
-          "<p class='col-5 p-0 text-nowrap my-auto'>" +
-          Math.round(data.daily[i].temp.day) +
-          "<span class='unit'>&#8457</span></p>";
+      html += '<img src="/assets/weather-png/sun.png" alt="day temp" class="col-5 w-50 h-50 ratio ratio-1x1">';
+      html += "<p class='col-5 p-0 text-nowrap my-auto'>" + Math.round(data.daily[i].temp.day) + "<span class='unit'>&deg</span></p>";
       html += "</div>"
 
       html += '<div class="row px-0 py-2 m-0 mb-2 justify-content-evenly">';
-      html +=
-          '<img src="/assets/weather-png/night.png" alt="night temp" class="col-5 w-50 h-50 ratio ratio-1x1">';
-      html +=
-          "<p class='col-5 p-0 text-nowrap my-auto'>" +
-          Math.round(data.daily[i].temp.night) +
-          "<span class='unit'>&#8457</span></p>";
+      html += '<img src="/assets/weather-png/night.png" alt="night temp" class="col-5 w-50 h-50 ratio ratio-1x1">';
+      html += "<p class='col-5 p-0 text-nowrap my-auto'>" + Math.round(data.daily[i].temp.night) + "<span class='unit'>&deg</span></p>";
       html += "</div>";
       html += "</div>";
 
 
       html += "<div class='col px-0 bg-light'>";
       html += '<div class="row px-0 py-2 m-0 mb-2 justify-content-evenly">';
-      html +=
-          '<img src="/assets/weather-png/clouds.png" alt="cloud coverage" class="col-5 w-50 h-50 ratio ratio-1x1">';
-      html +=
-          "<p class='col-5 p-0 text-nowrap my-auto'>" +
-          Math.round(data.daily[i].clouds) +
-          "<span class='unit'>%</span></p>";
+      html += '<img src="/assets/weather-png/clouds.png" alt="cloud coverage" class="col-5 w-50 h-50 ratio ratio-1x1">';
+      html += "<p class='col-5 p-0 text-nowrap my-auto'>" + Math.round(data.daily[i].clouds) + "<span class='unit'>%</span></p>";
       html += "</div>";
 
       html += '<div class="row px-0 py-2 m-0 mb-2 justify-content-evenly">';
-      html +=
-          '<img src="/assets/weather-png/sun-icon.png" alt="uvi" class="col-5 w-50 h-50 ratio ratio-1x1">';
-      html +=
-          "<p class='col-5 p-0 text-nowrap my-auto'>" +
-          Math.round(data.daily[i].uvi) +
-          "<span class='unit'>uvi</span></p>";
+      html += '<img src="/assets/weather-png/sun-icon.png" alt="uvi" class="col-5 w-50 h-50 ratio ratio-1x1">';
+      html += "<p class='col-5 p-0 text-nowrap my-auto'>" + Math.round(data.daily[i].uvi) + "<span class='unit'>uvi</span></p>";
       html += "</div>"
 
       html += '<div class="row px-0 py-2 m-0 mb-2 justify-content-evenly">';
-      html +=
-          '<img src="/assets/weather-png/eco.png" alt="humidity" class="col-5 w-50 h-50 ratio ratio-1x1">';
-      html +=
-          "<p class='col-5 p-0 text-nowrap my-auto'>" +
-          Math.round(data.daily[i].humidity) +
-          "<span class='unit'>%</span></p>";
+      html += '<img src="/assets/weather-png/eco.png" alt="humidity" class="col-5 w-50 h-50 ratio ratio-1x1">';
+      html += "<p class='col-5 p-0 text-nowrap my-auto'>" + Math.round(data.daily[i].humidity) + "<span class='unit'>%</span></p>";
       html += "</div>";
       html += "</div>";
 
 
       html += "<div class='col px-0'>";
       html += '<div class="row px-0 py-2 m-0 mb-2 justify-content-evenly">';
-      html +=
-          '<img src="/assets/weather-png/weathercock.png" alt="wind direction" class="col-5 w-50 h-50 ratio ratio-1x1">';
-      html +=
-          "<p class='col-5 p-0 text-nowrap my-auto'>" +
-          Math.round(data.daily[i].wind_deg) +
-          "<span class='unit'>deg</span></p>";
+      html += '<img src="/assets/weather-png/weathercock.png" alt="wind direction" class="col-5 w-50 h-50 ratio ratio-1x1">';
+      html += "<p class='col-5 p-0 text-nowrap my-auto'>" + Math.round(data.daily[i].wind_deg) + "<span class='unit'>deg</span></p>";
       html += "</div>";
 
       html += '<div class="row px-0 py-2 m-0 mb-2 justify-content-evenly">';
-      html +=
-          '<img src="/assets/weather-png/wind.png" alt="wind speed" class="col-5 w-50 h-50 ratio ratio-1x1">';
-      html +=
-          "<p class='col-5 p-0 text-nowrap my-auto'>" +
-          Math.round(data.daily[i].wind_speed) +
-          "<span class='unit'>mph</span></p>";
+      html += '<img src="/assets/weather-png/wind.png" alt="wind speed" class="col-5 w-50 h-50 ratio ratio-1x1">';
+      html += "<p class='col-5 p-0 text-nowrap my-auto'>" + Math.round(data.daily[i].wind_speed) + "<span class='unit'>mph</span></p>";
       html += "</div>"
 
       html += '<div class="row px-0 py-2 m-0 mb-2 justify-content-evenly">';
-      html +=
-          '<img src="/assets/weather-png/gust.png" alt="gust speed" class="col-5 w-50 h-50 ratio ratio-1x1">';
-      html +=
-          "<p class='col-5 p-0 text-nowrap my-auto'>" +
-          Math.round(data.daily[i].wind_gust) +
-          "<span class='unit'>mph</span></p>";
+      html += '<img src="/assets/weather-png/gust.png" alt="gust speed" class="col-5 w-50 h-50 ratio ratio-1x1">';
+      html += "<p class='col-5 p-0 text-nowrap my-auto'>" + Math.round(data.daily[i].wind_gust) + "<span class='unit'>mph</span></p>";
       html += "</div>";
       html += "</div>";
 

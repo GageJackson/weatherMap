@@ -21,44 +21,43 @@
   </head>
 
   <body class="bg-light">
-    <section class="container mt-5">
-      <h1 class="display-1 titleText">Weather the Storm</h1>
-      <div class="container d-grid gap-3">
-        <div class="mb-3 row gx-5">
-          <div
-            id="currentWeather"
-            class="col-12 col-md col-lg-3 p-0 my-2 mx-md-2"
-          >
-          </div>
-          <div class="col-12 col-md p-0 my-2 mx-md-2">
-            <div class="card">
-              <div
-                id="map"
-                class="p-0 m-0 colorMe card-body"
-                style="height: 500px"
-              ></div>
-              <div class="card-footer">
-                <h2>Choose a Location</h2>
-                <label for="userLocation">Address</label>
-                <input id="userLocation" type="text" class="input-group-text" />
-                <button id="btn-submit-address" class="btn mt-2">
-                  Let's Go!
-                </button>
-              </div>
+    <main class="container mt-5">
+      <h1 class="display-1 titleText mb-5">Weather the Storm</h1>
+      <section class="row row-cols-1 row-cols-md-2 g-3 mb-3">
+        <div id="currentWeather" class="col col-md-3">
+        </div>
+        <div class="col col-md-9">
+          <div class="card">
+            <div
+              id="map"
+              class="p-0 m-0 colorMe card-body"
+              style="height: 500px"
+            >
+              <!-- Mapbox goes here -->
+            </div>
+            <div class="card-footer">
+              <h2>Choose a Location</h2>
+              <label for="userLocation">Address</label>
+              <input id="userLocation" type="text" class="input-group-text" />
+              <button id="btn-submit-address" class="btn mt-2">
+                Let's Go!
+              </button>
             </div>
           </div>
-          <div class="col-12 p-0 my-2 mx-0">
-            <div id="forecastTiles" class="row p-0 m-0">
-              <!-- Simple Forecast Cards Here -->
-            </div>
-          </div>
+        </div>
+      </section>
 
+      <section  id="forecastTiles" class="row row-cols-2 row-cols-md-4 g-3 mb-3">
+          <!-- Simple Forecast Cards Here -->
+      </section>
+
+      <section class="row row-cols-1 g-3 mb-5">
           <!-- ///////////// -->
           <!-- Forecast Tabs -->
           <!-- ///////////// -->
-          <div class="col-12 card p-0 my-2">
-            <div class="align-items-start gx-5">
-              <div class="card-header d-flex align-content-center justify-content-center">
+          <div class="col">
+            <div class="card">
+              <div class="card-header">
                 <div
                   class="nav nav-pills nav-justified"
                   id="weatherTabs"
@@ -180,9 +179,8 @@
               </div>
             </div>
           </div>
-        </div>
-      </div>
-    </section>
+        </section>
+    </main>
 
     <!-- jQuery -->
     <script src="js/jquery-3.6.3.js"></script>
