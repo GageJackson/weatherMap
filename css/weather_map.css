@@ -1,6 +1,70 @@
 :root {
-  --color-primary: #35c3c3;
-  --color-primary-dark: #106565;
+  /* established color palette */
+  --color-primary-light: #4E596F;
+  --color-primary: #242A38;
+  --color-primary-dark: #1b1e2a;
+
+  --color-accent-light: #d94337;
+  --color-accent: #b22c5d;
+  --color-accent-dark: #452144;
+
+  --color-tertiary-light: #ebcc50;
+  --color-tertiary-dark: #e57b3a;
+
+  --color-white: #bacacc;
+  --color-neutral-1: #dadada;
+  --color-neutral-2: #d7d7d7;
+  --color-neutral-3: #979797;
+  --color-neutral-4: #797979;
+  --color-neutral-5: #34373b;
+
+  --color-accent-gradient: linear-gradient(to bottom right, var(--color-accent-light), var(--color-accent-dark));
+  --color-primary-gradient: linear-gradient(to bottom right, var(--color-primary-light), var(--color-primary-dark));
+  --color-tertiary-gradient: linear-gradient(to bottom right, var(--color-tertiary-light), var(--color-tertiary-dark));
+
+
+  /* established font family, font weights, and font sizes */
+  --ff-primary: 'Montserrat', sans-serif;
+  --ff-heading: var(--ff-primary);
+  --ff-body: var(--ff-primary);
+
+  --fw-light: 300;
+  --fw-medium: 500;
+  --fw-bold: 700;
+  --fw-black: 900;
+
+  /* font-sizes */
+  --fs-900: 8rem;
+  --fs-800: 6rem;
+  --fs-700: 4rem;
+  --fs-600: 2rem;
+  --fs-500: 1.75rem;
+  --fs-400: 1.125rem;
+  --fs-300: 1rem;
+  --fs-200: 0.875rem;
+
+  --ff-logo: var(--ff-primary);
+  --fs-logo: 2rem;
+  --fw-logo: var(--fw-black);
+
+  --fs-tagline: var(--fs-400);
+  --fs-button: var(--fs-300);
+  --fs-header: var(--fs-600);
+  --fs-body: var(--fs-300);
+
+  /* Established Sizes and Widths */
+  --size-nav-bar-element-height: 2rem;
+  --size-coffee-tile-height: 20rem;
+  --size-coffee-tile-width: 12rem;
+
+  /* Established Spacing of elements*/
+  --gap: 2rem;
+  --gap-nav-bar-elements: .5rem;
+  --margin-nav-bar-section: 10rem;
+  --margin-left-main-section: 3rem;
+  --padding-input-elements: .5rem;
+  --border-radius-buttons: .5rem;
+  --border-radius-coffee-tiles: 1rem;
 }
 
 *,
@@ -8,8 +72,13 @@
 *::after {
 }
 
-p{
-  font-size: clamp( 1vw, 1rem, 5vw);
+html, body {
+  /*background: linear-gradient(0deg, rgba(255,185,138,1) 0%, rgba(255,235,135,1) 100%);*/
+  background-color: var(--color-primary-dark);
+}
+
+.container {
+  margin-top: 6rem;
 }
 
 .btn {
@@ -21,18 +90,8 @@ p{
   border-radius: 0.5rem 0.5rem 0 0;
 }
 
-.titleText {
-  color: var(--color-primary);
-  font-weight: bolder;
-  text-align: center;
-}
-
-.unit {
-  font-size: 0.725rem;
-}
-
 .nav-pills {
-  --bs-nav-pills-link-active-bg: #35c3c3;
+  --bs-nav-pills-link-active-bg: var(--color-primary);
 }
 
 .nav-link {
@@ -41,4 +100,26 @@ p{
 
 .nav-link:hover {
   color: var(--color-primary-dark);
+}
+
+.logo-small {
+  height: 3rem;
+  aspect-ratio: 1;
+}
+
+.glass {
+  background: hsla(0 0% 50% / 0.15);
+  border: var(--color-neutral-5) solid 1px;
+
+  box-shadow: 0 .5rem 2rem 0 hsla(230 33% 7%/ 0.35);
+  backdrop-filter: blur(4rem);
+  -webkit-backdrop-filter: blur(4rem);
+}
+
+.glass-image {
+  width: 100%;
+  aspect-ratio: 1;
+  /*background-color: var(--color-primary);*/
+  opacity: 100%;
+  mix-blend-mode: hard-light;
 }

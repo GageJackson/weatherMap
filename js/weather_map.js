@@ -1,8 +1,8 @@
 (function() {
   "use strict"
-  let locationCoord = [-98.48527, 29.423017];
+  let locationCoord = [-95.30079, 32.34687];
   const zoomLevel = 10;
-  const dayCount = 4;
+  const dayCount = 7;
   setPage(locationCoord);
 
   mapboxgl.accessToken = mapboxKey;
@@ -67,7 +67,7 @@
       lat: data.lat,
       lon: data.lon,
     }).done(function (locationData) {
-      locationName = locationData[0].name;
+      locationName = locationData[0].name + ", " + locationData[0].state;
       setCurrentWeatherDiv(data, locationName);
       setForecastedWeather(data);
     });
@@ -130,7 +130,7 @@
       weatherGifSource = "/assets/weather-gifs/foggy.gif";
     }
     if (weatherState === 800) {
-      weatherGifSource = "/assets/weather-gifs/sun.gif";
+      weatherGifSource = "/assets/weather-png/sun.png";
     }
     if (weatherState === 801) {
       weatherGifSource = "/assets/weather-gifs/cloudy.gif";
@@ -150,53 +150,25 @@
   function setCurrentWeatherDiv(data, myLocation) {
     let weatherGif = getWeatherGif(data.current.weather[0].id);
     let html = "";
-    html += `<div class ='card container'>`;
+    html += `<div class ='card ratio ratio-1x1 glass'>`;
+    html += `<div class ='card-body'>`;
+    html += `<div class ='row-cols-2'>`;
+    html += `<div class ='col'>`;
+    html += `<img src=${weatherGif} alt="weather gif" class="glass-image">`;
+    html += `<p class="display-3 text-light">${Math.round(data.current.temp)}&deg</p>`;
 
-    html += `<div class="card-header row border-1 colorMe text-light">`;
-    html += `<h3 class="text-start">${myLocation}</h3>`;
-    html += `<h3 class="text-start">Today</h3>`;
-    html += `</div>`;//end header
+    html += `<p class="text-start text-light">${myLocation}</p>`;
+    html += `<p class="text-start text-light">Today</p>`;
+    html += `<p class="text-start text-light">${data.current.weather[0].description}</p>`;
+    html += `<span class=" text-light">${data.hourly[0].pop * 100}%</span>`;
+    html += `<span class=" text-light">${data.current.humidity} %</span>`;
+    html += `</div>`;//end of col
 
-    html += `<div class="card-body row p-0">`;//start card body
-    html += `<div class="col-6 p-0 d-flex">`;//start col 1 of 2
-    html += `<img src=${weatherGif} alt="weather gif" class="img-fluid align-self-center">`;
-    html += `</div>`;//end col 1 of 2 for image
+    html += `<div class ='col'>`;
+    html += `</div>`;//end of col
 
-    html += `<div class="col-6">`;//start col 2 of 2
-
-    html += `<div class="row mb-3 d-flex align-items-center">`;
-    html += `<div class="col-4 py-2">`;
-    html += `<img src="/assets/weather-png/temperature.png" alt="current temp" class="img-fluid">`;
-    html += `</div>`;
-    html += `<div class="col-8">`;
-    html += `<span class="">${Math.round(data.current.temp)}&deg</span>`;
-    html += `</div>`;
-    html += `</div>`;//end row 1 of 3
-
-    html += `<div class="row bg-light mb-3 d-flex align-items-center">`;
-    html += `<div class="col-4 py-2">`;
-    html += `<img src="/assets/weather-png/umbrella.png" alt="current temp" class="img-fluid">`;
-    html += `</div>`;
-    html += `<div class="col-8">`;
-    html += `<span class="">${data.hourly[0].pop * 100}%</span>`;
-    html += `</div>`;
-    html += `</div>`;//end row 2 of 3
-
-    html += `<div class="row mb-3 d-flex align-items-center">`;
-    html += `<div class="col-4 py-2">`;
-    html += `<img src="/assets/weather-png/wind.png" alt="current temp" class="img-fluid">`;
-    html += `</div>`;
-    html += `<div class="col-8">`;
-    html += `<span class="">${data.current.wind_speed} mph</span>`;
-    html += `</div>`;
-    html += `</div>`;//end row 3 of 3
-
-    html += `</div>`;//end col 2 of 2
-    html += `</div>`;//end card body
-
-    html += `<div class="card-footer row">`;
-    html += `<h3 class="text-center">${data.current.weather[0].description}</h3>`;
-    html += `</div>`;//end Footer
+    html += `</div>`;//end of row
+    html += `</div>`;//end of header
 
     html += `</div>`;//end Card
     currentWeatherDiv.innerHTML = (html);

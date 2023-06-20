@@ -20,29 +20,108 @@
 
   </head>
 
-  <body class="bg-light">
-    <main class="container mt-5">
-      <h1 class="display-1 titleText mb-5">Weather the Storm</h1>
-      <section class="row row-cols-1 row-cols-md-2 g-3 mb-3">
-        <div id="currentWeather" class="col col-md-3">
-        </div>
-        <div class="col col-md-9">
-          <div class="card">
-            <div
-              id="map"
-              class="p-0 m-0 colorMe card-body"
-              style="height: 500px"
-            >
-              <!-- Mapbox goes here -->
-            </div>
-            <div class="card-footer">
-              <h2>Choose a Location</h2>
-              <label for="userLocation">Address</label>
-              <input id="userLocation" type="text" class="input-group-text" />
-              <button id="btn-submit-address" class="btn mt-2">
-                Let's Go!
+  <body>
+
+    <header class="">
+      <nav class="navbar fixed-top navbar-expand-lg px-3">
+        <div class="container-fluid">
+          <div class="d-flex justify-content-start align-items-center">
+            <a class="navbar-brand" href="/index">
+              <img src="assets/weather-png/sun-icon.png" alt="Drip drop logo" class="logo-small" />
+            </a>
+            <a class="navbar-brand d-none d-lg-block" href="/index">Drip Drop</a>
+          </div>
+
+            <div class="d-flex">
+              <a class="btn btn-warning mx-3 d-lg-none" href="/register/user">Join us!</a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
+                <span class="navbar-toggler-icon"></span>
               </button>
             </div>
+          <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+            <div class="offcanvas-header bg-color-neutral-light">
+              <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Honeydo Helper</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body bg-color-neutral-light">
+              <ul class="navbar-nav justify-content-start justify-content-lg-end flex-grow-1">
+                <li class="nav-item">
+                  <a class="nav-link" href="/index">Home</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/about">About</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/support">Support</a>
+                </li>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container">
+<!--      <h1 class="titleText mb-5">Weather the Storm</h1>-->
+      <section class="row row-cols-1 row-cols-md-2 g-4 mb-3">
+        <div id="currentWeather" class="col col-md-4">
+        </div>
+        <div class="col col-md-8">
+          <div class="card h-100 glass">
+            <div class="row row-cols-1 row-cols-md-3 g-2">
+              <div class="col">
+                <div class="card ratio ratio-1x1 glass"></div>
+              </div>
+              <div class="col">
+                <div class="card ratio ratio-1x1 glass"></div>
+              </div>
+              <div class="col">
+                <div class="card ratio ratio-1x1 glass"></div>
+              </div>
+              <div class="col">
+                <div class="card glass">
+                  <div class="row row-cols-2 g-1">
+                    <div class="col-4 glass">
+                      <p>words</p>
+                    </div>
+                    <div class="col-8 glass">
+                      <p>words</p>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+              <div class="col">
+                <div class="card glass h-100">
+                  <div class="row row-cols-2 g-1">
+                    <div class="col-4 glass">
+                      <p>words</p>
+                    </div>
+                    <div class="col-8 glass">
+                      <p>words</p>
+                    </div>
+                  </div>                </div>
+
+              </div>
+              <div class="col">
+                <div class="card glass h-100">
+                  <div class="row row-cols-2 g-1">
+                    <div class="col-4 glass">
+                      <p>words</p>
+                    </div>
+                    <div class="col-8 glass">
+                      <p>words</p>
+                    </div>
+                  </div>                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col col-md-12">
+          <div class="card h-100 glass">
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut dignissimos explicabo laborum neque rem voluptatem voluptatibus. Aut beatae deleniti facilis laboriosam omnis quidem reiciendis veniam! A aliquam ipsa iste molestias!</p>
           </div>
         </div>
       </section>
@@ -52,134 +131,147 @@
       </section>
 
       <section class="row row-cols-1 g-3 mb-5">
-          <!-- ///////////// -->
-          <!-- Forecast Tabs -->
-          <!-- ///////////// -->
-          <div class="col">
-            <div class="card">
-              <div class="card-header">
-                <div
-                  class="nav nav-pills nav-justified"
-                  id="weatherTabs"
-                  role="tablist"
-                  aria-orientation="vertical"
+        <!-- ///////////// -->
+        <!-- Forecast Tabs -->
+        <!-- ///////////// -->
+        <div class="col">
+          <div class="card">
+            <div class="card-header">
+              <div
+                class="nav nav-pills nav-justified"
+                id="weatherTabs"
+                role="tablist"
+                aria-orientation="vertical"
+              >
+                <button
+                  class="nav-link active"
+                  id="weather-tab-1"
+                  data-bs-toggle="pill"
+                  data-bs-target="#weather-1"
+                  type="button"
+                  role="tab"
+                  aria-controls="weather-1"
+                  aria-selected="true"
                 >
-                  <button
-                    class="nav-link active"
-                    id="weather-tab-1"
-                    data-bs-toggle="pill"
-                    data-bs-target="#weather-1"
-                    type="button"
-                    role="tab"
-                    aria-controls="weather-1"
-                    aria-selected="true"
-                  >
-                    Day 1
-                  </button>
-                  <button
-                    class="nav-link"
-                    id="weather-tab-2"
-                    data-bs-toggle="pill"
-                    data-bs-target="#weather-2"
-                    type="button"
-                    role="tab"
-                    aria-controls="weather-2"
-                    aria-selected="false"
-                  >
-                    Day 2
-                  </button>
-                  <button
-                    class="nav-link"
-                    id="weather-tab-3"
-                    data-bs-toggle="pill"
-                    data-bs-target="#weather-3"
-                    type="button"
-                    role="tab"
-                    aria-controls="weather-3"
-                    aria-selected="false"
-                  >
-                    Day 3
-                  </button>
-                  <button
-                    class="nav-link"
-                    id="weather-tab-4"
-                    data-bs-toggle="pill"
-                    data-bs-target="#weather-4"
-                    type="button"
-                    role="tab"
-                    aria-controls="weather-4"
-                    aria-selected="false"
-                  >
-                    Day 4
-                  </button>
-                  <button
-                    class="nav-link"
-                    id="weather-tab-5"
-                    data-bs-toggle="pill"
-                    data-bs-target="#weather-5"
-                    type="button"
-                    role="tab"
-                    aria-controls="weather-5"
-                    aria-selected="false"
-                  >
-                    Day 5
-                  </button>
-                </div>
-              </div>
-              <div class="card-body">
-                <div class="tab-content bg-white" id="weatherTabContent">
-                  <div
-                    class="tab-pane fade show active"
-                    id="weather-1"
-                    role="tabpanel"
-                    aria-labelledby="weather-tab-1"
-                  >
-                    Weather1
-                  </div>
-                  <div
-                    class="tab-pane fade"
-                    id="weather-2"
-                    role="tabpanel"
-                    aria-labelledby="weather-tab-2"
-                  >
-                    Weather2
-                  </div>
-                  <div
-                    class="tab-pane fade"
-                    id="weather-3"
-                    role="tabpanel"
-                    aria-labelledby="weather-tab-3"
-                  >
-                    Weather3
-                  </div>
-                  <div
-                    class="tab-pane fade"
-                    id="weather-4"
-                    role="tabpanel"
-                    aria-labelledby="weather-tab-4"
-                  >
-                    Weather4
-                  </div>
-                  <div
-                    class="tab-pane fade"
-                    id="weather-5"
-                    role="tabpanel"
-                    aria-labelledby="weather-tab-5"
-                  >
-                    Weather5
-                  </div>
-                </div>
-              </div>
-              <div class="card-footer">
-                <a
-                        href="https://www.flaticon.com"
-                        title="animated icons"
-                        class="text-dark text-opacity-25"
-                >Icons created by Freepik - Flaticon</a>
+                  Day 1
+                </button>
+                <button
+                  class="nav-link"
+                  id="weather-tab-2"
+                  data-bs-toggle="pill"
+                  data-bs-target="#weather-2"
+                  type="button"
+                  role="tab"
+                  aria-controls="weather-2"
+                  aria-selected="false"
+                >
+                  Day 2
+                </button>
+                <button
+                  class="nav-link"
+                  id="weather-tab-3"
+                  data-bs-toggle="pill"
+                  data-bs-target="#weather-3"
+                  type="button"
+                  role="tab"
+                  aria-controls="weather-3"
+                  aria-selected="false"
+                >
+                  Day 3
+                </button>
+                <button
+                  class="nav-link"
+                  id="weather-tab-4"
+                  data-bs-toggle="pill"
+                  data-bs-target="#weather-4"
+                  type="button"
+                  role="tab"
+                  aria-controls="weather-4"
+                  aria-selected="false"
+                >
+                  Day 4
+                </button>
+                <button
+                  class="nav-link"
+                  id="weather-tab-5"
+                  data-bs-toggle="pill"
+                  data-bs-target="#weather-5"
+                  type="button"
+                  role="tab"
+                  aria-controls="weather-5"
+                  aria-selected="false"
+                >
+                  Day 5
+                </button>
               </div>
             </div>
+            <div class="card-body">
+              <div class="tab-content bg-white" id="weatherTabContent">
+                <div
+                  class="tab-pane fade show active"
+                  id="weather-1"
+                  role="tabpanel"
+                  aria-labelledby="weather-tab-1"
+                >
+                  Weather1
+                </div>
+                <div
+                  class="tab-pane fade"
+                  id="weather-2"
+                  role="tabpanel"
+                  aria-labelledby="weather-tab-2"
+                >
+                  Weather2
+                </div>
+                <div
+                  class="tab-pane fade"
+                  id="weather-3"
+                  role="tabpanel"
+                  aria-labelledby="weather-tab-3"
+                >
+                  Weather3
+                </div>
+                <div
+                  class="tab-pane fade"
+                  id="weather-4"
+                  role="tabpanel"
+                  aria-labelledby="weather-tab-4"
+                >
+                  Weather4
+                </div>
+                <div
+                  class="tab-pane fade"
+                  id="weather-5"
+                  role="tabpanel"
+                  aria-labelledby="weather-tab-5"
+                >
+                  Weather5
+                </div>
+              </div>
+            </div>
+            <div class="card-footer">
+              <a
+                      href="https://www.flaticon.com"
+                      title="animated icons"
+                      class="text-dark text-opacity-25"
+              >Icons created by Freepik - Flaticon</a>
+            </div>
           </div>
-        </section>
+        </div>
+        <div class="card">
+          <div id="map" class="p-0 m-0 colorMe card-body" style="height: 400px">
+            <!-- Mapbox goes here -->
+          </div>
+          <div class="card-footer">
+            <h2>Choose a Location</h2>
+            <label for="userLocation">Address</label>
+            <input id="userLocation" type="text" class="input-group-text" />
+            <button id="btn-submit-address" class="btn mt-2">
+              Let's Go!
+            </button>
+          </div>
+        </div>
+      </section>
     </main>
 
     <!-- jQuery -->
